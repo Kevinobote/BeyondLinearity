@@ -106,4 +106,20 @@ plot(income, prestige,
      )
 inc.100 <- seq(min(income), max(income), length.out = 100)
 pres <- predict(mod.lo.inc, newdata = data.frame(income = inc.100))
+lines(inc.100, pres, lwd = 2, lty= 2, col = "blue")
+lines(smooth.spline(income, prestige, df = 3.85), lwd = 2, col = "red")
 
+# Education and prestige
+plot(education, prestige, 
+     xlab = "Education", 
+     ylab = "Prestige", 
+     main = "Scatterplot of Education vs. Prestige"
+)
+inc.100 <- seq(min(education), max(education), length.out = 100)
+pres <- predict(mod.lo.ed, newdata = data.frame(education = inc.100))
+lines(inc.100, pres, lwd = 2, lty= 2, col = "blue")
+lines(smooth.spline(education, prestige, df = 3.85), lwd = 2, col = "red")
+
+# Additive non parametric model
+mod.gam <- gam(prestige ~ s(income) + s(education))
+summary(mod.gam)
