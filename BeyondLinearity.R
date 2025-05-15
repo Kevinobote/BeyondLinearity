@@ -1,5 +1,6 @@
 # Load the 'car' package which contains the 'Prestige' dataset
-# library(car)
+library(car)
+library(mgcv)
 
 # Load the 'Prestige' dataset into the workspace
 data(Prestige)
@@ -121,5 +122,16 @@ lines(inc.100, pres, lwd = 2, lty= 2, col = "blue")
 lines(smooth.spline(education, prestige, df = 3.85), lwd = 2, col = "red")
 
 # Additive non parametric model
-mod.gam <- gam(prestige ~ s(income) + s(education))
+mod.gam <- gam(prestige ~ (income) + (education), span = 0.5, degree = 1)
 summary(mod.gam)
+
+
+mod.gam <- gam(prestige ~ s(income))
+summary(mod.gam)
+
+
+mod.gam <- gam(prestige ~ s(income) + s(education), span = 0.5, degree =1)
+summary(mod.gam)
+plot(mod.gam, se = TRUE, col = "blue")
+
+# income is the outcome variable, use machine leargning
