@@ -1,5 +1,5 @@
 # Load the 'car' package which contains the 'Prestige' dataset
-library(car)
+# library(car)
 
 # Load the 'Prestige' dataset into the workspace
 data(Prestige)
@@ -85,3 +85,25 @@ mod.lo1 <- loess(prestige ~ income,
 # Compare the two models using ANOVA
 # This tests whether adding 'education' significantly improves the model
 anova(mod.lo, mod.lo1)
+
+# Significance test of each predictor
+mod.lo.inc <- loess(prestige ~ income, 
+                          span = 0.7, 
+                          degree = 1)
+mod.lo.ed <- loess(prestige ~ education, 
+                          span = 0.7, 
+                          degree = 1)
+
+anova(mod.lo.inc, mod.lo.ed)  
+
+# Smoothing spline
+mod.lo.inc
+
+plot(income, prestige, 
+     xlab = "Average income", 
+     ylab = "Prestige", 
+     main = "Scatterplot of Income vs. Prestige"
+     )
+inc.100 <- seq(min(income), max(income), length.out = 100)
+pres <- predict(mod.lo.inc, newdata = data.frame(income = inc.100))
+
