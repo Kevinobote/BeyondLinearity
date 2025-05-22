@@ -1,30 +1,56 @@
----
-title: "ReadME.MD"
-author: "Hineni"
-date: "2025-05-08"
-output: html_document
----
+# Salary Data Analysis Project
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+## Overview
+This project provides a comprehensive analysis of salary data, exploring factors that influence compensation in the job market. The analysis includes exploratory data visualization, outlier detection, correlation analysis, and predictive modeling.
 
-## R Markdown
+## Implementation
+The analysis is available in two programming languages:
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+- **R Script** (`Group.R`): Complete analysis using R's statistical and visualization libraries
+- **Python Notebook** (`Group.ipynb`): Equivalent analysis implemented in Python using pandas, scikit-learn, and matplotlib
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## Key Features
 
-```{r cars}
-summary(cars)
-```
+### Data Preparation
+- Cleaning and transformation of salary data
+- Categorization of experience levels and employment types
+- Creation of income categories (low, middle, high)
 
-## Including Plots
+### Exploratory Analysis
+- Descriptive statistics of salary distributions
+- Visualization of salary patterns across different factors
+- Identification of top-paying job titles
 
-You can also embed plots, for example:
+### Advanced Analysis
+- Outlier detection using IQR method
+- Correlation analysis between numeric variables
+- Normalized salary distributions
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+### Modeling
+- Linear Regression: Basic predictive model
+- Random Forest: Advanced model with feature importance
+- GAM/Polynomial Regression: Capturing non-linear relationships
+- Multinomial Logistic Regression: Classification of income categories
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Visualizations
+All visualizations are saved to the `images/` directory, including:
+- Salary distributions
+- Boxplots by experience level, remote work ratio, and company size
+- Top 10 highest-paying job titles
+- Outlier detection plots
+- Correlation matrices
+- Model comparison charts
+
+## Usage
+- To run the R analysis: Open and execute `Group.R` in RStudio or R console
+- To run the Python analysis: Open `Group.ipynb` in Jupyter Notebook or JupyterLab
+
+## Requirements
+### R Dependencies
+- ggplot2, dplyr, tidyr, corrplot, caret, mgcv, randomForest, e1071
+
+### Python Dependencies
+- pandas, numpy, matplotlib, seaborn, scikit-learn
+
+## Results
+The analysis provides insights into salary determinants, identifies outliers, and compares the performance of different predictive models to understand which factors most strongly influence compensation.

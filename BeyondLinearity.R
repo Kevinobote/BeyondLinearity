@@ -133,5 +133,34 @@ summary(mod.gam)
 mod.gam <- gam(prestige ~ s(income) + s(education), span = 0.5, degree =1)
 summary(mod.gam)
 plot(mod.gam, se = TRUE, col = "blue")
+detach(Prestige)
 
-# income is the outcome variable, use machine leargning
+## Generalized Non Parametric Regression
+# Mroz dataset
+# Load the 'Mroz' dataset from the 'car' package
+data(Mroz)
+attach(Mroz)
+
+inc <- Mroz$inc
+length(inc)
+
+k5f <- factor(k5)
+k618f <- factor(k618)
+
+mod_1 <- gam(lfp ~ s(age) + s(inc) + k5f + wc + hc, family = binomial)
+summary(mod_1)
+# plot
+plot(mod_1, se = TRUE, col = "blue")
+
+
+#
+
+mod_1 <- gam(lfp ~ (age) + (inc) + k5f + wc + hc, family = binomial)
+summary(mod_1)
+
+
+
+# income is the outcome variable, use machine leargning, divide into 3 categories(low, medium, high)
+# You can only smooth when variable is continuous
+# Use the smooth function to smooth the variable
+# Find an appropriate smoothing model
